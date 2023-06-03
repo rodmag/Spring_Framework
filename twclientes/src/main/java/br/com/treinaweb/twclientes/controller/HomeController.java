@@ -16,7 +16,6 @@ public class HomeController {
     @GetMapping("/")
     public String home() { //Action.
         return "home"; //String Home. The view
-
     }
 
     @GetMapping("/mensagem")
