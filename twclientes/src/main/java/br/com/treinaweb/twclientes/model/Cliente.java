@@ -1,6 +1,10 @@
 package br.com.treinaweb.twclientes.model;
 
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,7 +20,8 @@ public class Cliente {
     private String nome;
 
     @Column(nullable = false, name = "data_nascimento")
-    private Date dataNascimento;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dataNascimento; //Salva data com time zone evitando problemas quando salvar a data
 
     @Column(nullable = false)
     private String profissao;
@@ -41,11 +46,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -57,7 +62,7 @@ public class Cliente {
         this.profissao = profissao;
     }
 
-    public Cliente(long id, String nome, Date dataNascimento, String profissao) {
+    public Cliente(long id, String nome, LocalDate dataNascimento, String profissao) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;

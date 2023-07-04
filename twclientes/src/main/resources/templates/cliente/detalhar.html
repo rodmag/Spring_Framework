@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Spring Lista Clientes</title>
+    <title>Spring Demo - Detalhes</title>
     <meta charset="utf-8">
 
     <!-- Adding Bootstrap -->
@@ -55,51 +55,28 @@
 <main class="container">
     <div class="row0">
         <div class="col-sm-12">
-            <h1>Listagem de Clientes</h1>
+            <h1>Detalhes do Cliente</h1>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data Nacimento</th>
-                    <th scope="col">Profissão</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="cliente : ${clientes}">
-                    <th scope="row" th:text="${cliente.id}"></th>
-                    <td>
-                        <!-- URL dinamica para cada cliente -->
-                        <a th:text="${cliente.nome}" th:href="@{/cliente/{id} (id=${cliente.id})}"></a>
-                    </td>
-                    <td th:text="${cliente.dataNascimento}"></td>
-                    <td th:text="${cliente.profissao}"></td>
-                    <td>
-                        <a th:href="@{/cliente/{id}/editar (id=${cliente.id})}" class="btn btn-warning">Editar</a>
-                        <a
-                                th:href="@{/cliente/{id}/excluir (id=${cliente.id})}"
-                                class="btn btn-danger"
-                                onclick="return confirm('Deseja exluir o cliente selecionado?');"
-                        >Excluir</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-sm-12"></div>
+        <div class="card">
+            <div class="card-header" th:text="${cliente.nome}">
+            </div>
+            <div class="card-body">
+                <p>
+                    Profissão: <span th:text="${cliente.profissao}"></span>
+                </p>
+                <p>
+                    Data de Nascimento: <span th:text="${cliente.dataNascimento}"></span>
+                </p>
+
+                <a href="" class="btn btn-warning">Editar</a>
+                <a href="" class="btn btn-danger">Excluir</a>
+            </div>
         </div>
     </div>
-
-    <div class="row0">
-        <div class="col-sm-12">
-            <a th:href="@{/cliente/cadastrar}" class="btn btn-primary">Cadastrar novo Cliente</a>
-        </div>
-    </div>
-
 </main>
 
 <!-- Adding Bootstrap - At the end of body, last thing to be loaded.-->
